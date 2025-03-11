@@ -1,12 +1,10 @@
-Here are the installation instructions in plain text:
+# **If you want to play**
+
+https://pipe-game-azure.vercel.app/
 
 1.  **Clone the Repository**:
 
     -   Clone the repository to your local machine using the following command:
-
-        bash
-
-        CopyEdit
 
         `git clone https://github.com/damiands2727/Pipe-Game`
 
@@ -14,26 +12,14 @@ Here are the installation instructions in plain text:
 
     -   Navigate to the project directory:
 
-        bash
-
-        CopyEdit
-
         `cd Pipe-Game`
 
     -   Install the required dependencies using npm or yarn. Run one of the following commands:
         -   With npm:
 
-            nginx
-
-            CopyEdit
-
             `npm install`
 
         -   With yarn:
-
-            nginx
-
-            CopyEdit
 
             `yarn install`
 
@@ -42,17 +28,9 @@ Here are the installation instructions in plain text:
     -   After the dependencies are installed, start the development server:
         -   With npm:
 
-            sql
-
-            CopyEdit
-
             `npm start`
 
         -   With yarn:
-
-            sql
-
-            CopyEdit
 
             `yarn start`
 
@@ -60,14 +38,11 @@ Here are the installation instructions in plain text:
 
     -   Once the server is running, open your browser and go to:
 
-        arduino
-
-        CopyEdit
-
         `http://localhost:3000`
 
     -   This will load the application in your browser.
 
+# **About the code**:
 
 The `PipeGame` component represents the entire pipe game in React. The game consists of a grid, pieces (pipes), and a water flow simulation. Here's a breakdown of the core elements and functions in the code:
 
@@ -133,3 +108,4 @@ The `PipeGame` component represents the entire pipe game in React. The game cons
     -   An overlay showing the win or lose message.
 
 This code handles both the mechanics of placing pipes and simulating water flow. The player needs to correctly arrange the pipes to connect the "start" to the "end" so that water can flow through the pipes.
+
