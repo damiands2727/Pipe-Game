@@ -1,3 +1,74 @@
+Here are the installation instructions in plain text:
+
+1.  **Clone the Repository**:
+
+    -   Clone the repository to your local machine using the following command:
+
+        bash
+
+        CopyEdit
+
+        `git clone <repository-url>`
+
+2.  **Install Dependencies**:
+
+    -   Navigate to the project directory:
+
+        bash
+
+        CopyEdit
+
+        `cd <project-directory>`
+
+    -   Install the required dependencies using npm or yarn. Run one of the following commands:
+        -   With npm:
+
+            nginx
+
+            CopyEdit
+
+            `npm install`
+
+        -   With yarn:
+
+            nginx
+
+            CopyEdit
+
+            `yarn install`
+
+3.  **Start the Development Server**:
+
+    -   After the dependencies are installed, start the development server:
+        -   With npm:
+
+            sql
+
+            CopyEdit
+
+            `npm start`
+
+        -   With yarn:
+
+            sql
+
+            CopyEdit
+
+            `yarn start`
+
+4.  **Open in Browser**:
+
+    -   Once the server is running, open your browser and go to:
+
+        arduino
+
+        CopyEdit
+
+        `http://localhost:3000`
+
+    -   This will load the application in your browser.
+
+
 The `PipeGame` component represents the entire pipe game in React. The game consists of a grid, pieces (pipes), and a water flow simulation. Here's a breakdown of the core elements and functions in the code:
 
 ### 1\. **Pipe Types (`pipe_Types`)**:
