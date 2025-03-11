@@ -1,0 +1,46 @@
+name: Remote Testing for React
+
+on:
+  push:
+    branches: ["54810-ReactTesting"]
+
+jobs:
+  Test-Submit-React-Assessments:
+    name: Run React v18 tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check react version
+        run: echo "$(npm show react version)"
+
+      - name: Check react testing library
+        run: echo "$(npm show @testing-library/react version)"
+
+      - name: Setting up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+
+      - run: yarn install
+
+      - name: React Starter Tests
+        run: |
+          yarn test ./src/App.test.js
+          yarn test ./src/App-Part2.test.js
+          yarn test ./src/Disney.test.js
+          yarn test ./src/DisneyTask.test.js
+          yarn test ./src/GettingStarted.test.js
+          yarn test ./src/InternalClock.test.js
+          yarn test ./src/ReactClock.test.js
+          yarn test ./src/setState.test.js
+        continue-on-error: true
+
+      - name: React Intermediate Tests
+        run: |
+          yarn test ./src/ReactIntermediate1.test.js
+          yarn test ./src/ReactIntermediate2.test.js
+        continue-on-error: true
+
+      - name: Build app
+        run: yarn build
+#

@@ -1,0 +1,77 @@
+{
+  "name": "componentize-1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/runtime": "^7.20.1",
+    "@popperjs/core": "^2.11.0",
+    "@sweetalert/with-react": "^0.1.1",
+    "@testing-library/dom": "^8.20.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "axios": "^0.24.0",
+    "bootstrap": "^5.3.3",
+    "cra-template": "1.1.2",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "rc-pagination": "^3.1.14",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "^4.0.3",
+    "react-test-renderer": "^18.2.0",
+    "react-toastify": "^8.1.0",
+    "reactstrap": "^9.0.1",
+    "s.starterapptests": "^0.2.21",
+    "sabio-debug": "https://github.com/sabiocode/debug",
+    "sweetalert": "^2.1.2",
+    "toastr": "^2.1.4",
+    "web-vitals": "^2.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+    },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:react-hooks/recommended"
+    ],
+    "rules": {
+      "react-hooks/exhaustive-deps": [
+        0
+      ],
+      "no-alert": [
+        2
+      ],
+      "eqeqeq": [
+        2,
+        "always"
+      ],
+      "no-unused-vars": [
+        2,
+        {
+          "vars": "local",
+          "args": "after-used",
+          "ignoreRestSiblings": false
+        }
+      ]
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "jest-html-reporter": "^3.9.0"
+  }
+}
