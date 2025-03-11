@@ -8,7 +8,7 @@ Here are the installation instructions in plain text:
 
         CopyEdit
 
-        `git clone <repository-url>`
+        `git clone https://github.com/damiands2727/Pipe-Game`
 
 2.  **Install Dependencies**:
 
@@ -18,7 +18,7 @@ Here are the installation instructions in plain text:
 
         CopyEdit
 
-        `cd <project-directory>`
+        `cd Pipe-Game`
 
     -   Install the required dependencies using npm or yarn. Run one of the following commands:
         -   With npm:
