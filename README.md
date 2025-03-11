@@ -1,154 +1,113 @@
-# The Goals of This Task
+# **If you want to play**
 
-> This material was covered in the videos you have been pointed to and within the wiki
+https://pipe-game-azure.vercel.app/
 
-You will set up a skeleton of page/application where you will be building an application and developing your skills as a developer
+# **If you want to download the code**
 
-### Extensions
+1.  **Clone the Repository**:
 
-Recommended Extensions are actually required.
+    -   Clone the repository to your local machine using the following command:
 
-### Commands to Get Started Examples
+        `git clone https://github.com/damiands2727/Pipe-Game`
 
-These are the command example that you would need to run out of the terminal to get your react application up and running.
+2.  **Install Dependencies**:
 
-#### Yarn
+    -   Navigate to the project directory:
 
-From within the folder that contains the `package.json` file.
+        `cd Pipe-Game`
 
-```bash
-yarn install
-```
+    -   Install the required dependencies using npm or yarn. Run one of the following commands:
+        -   With npm:
 
-Then you execute:
+            `npm install`
 
-```bash
-yarn start
-```
+        -   With yarn:
 
-### Install Sabio Module
+            `yarn install`
 
-From Bash window run the following command
+3.  **Start the Development Server**:
 
-```bash
-npm install sabio -g
-```
+    -   After the dependencies are installed, start the development server:
+        -   With npm:
 
-or
+            `npm start`
 
-```bash
-yarn run sabio
-```
+        -   With yarn:
 
-##### Back Up Your Work
+            `yarn start`
 
-To safely back up your work to GitHub repository you can run the following command from within the terminal.
+4.  **Open in Browser**:
 
-You can do this any time.
+    -   Once the server is running, open your browser and go to:
 
-The first time you do this, you will be prompted for some information.
+        `http://localhost:3000`
 
-> If this fails the first time you do this, be sure to bring this up to an instructor the NEXT time you get on the Q. ( Not now, but the _NEXT_ time you get on the Q)
+    -   This will load the application in your browser.
 
-```bash
-yarn run share
-```
+# **About the code**:
 
-This "share" command is actually running our "sabio" module with the "share branch" command. This is that command:
+The `PipeGame` component represents the entire pipe game in React. The game consists of a grid, pieces (pipes), and a water flow simulation. Here's a breakdown of the core elements and functions in the code:
 
-```bash
-sabio -sb
-```
+### 1\. **Pipe Types (`pipe_Types`)**:
 
-This command will save a copy of your code on our GitHub account so you can share or backup you code. You can/should do this every day.
+-   This array defines the different pipe types available in the game. Each pipe type has:
+    -   `type`: The name of the pipe (e.g., "horizontal", "vertical", "start", "end").
+    -   `connections`: The directions that the pipe can connect to (e.g., "top", "right", "bottom", "left").
+    -   `image`: The image corresponding to the pipe.
 
-### Already Installed Into This Application
+### 2\. **Available Pieces (`initialAvailablePieces`)**:
 
-The following modules are already installed
+-   This array keeps track of how many of each type of pipe the player has available to place on the grid. It defines the initial count for each type of pipe, such as 3 horizontal pipes and 1 start pipe.
 
-#### bootstrap
+### 3\. **Grid Creation (`createEmptyGrid`)**:
 
-- https://getbootstrap.com/
+-   A 5x5 grid is initialized where each cell is filled with an "empty" pipe. This grid will hold the pipes the player places.
 
-This module provide the HTML/CSS and JS Framework that drive the foundational aspects of the UI.
+### 4\. **State Variables**:
 
-##### reactstrap
+-   `grid`: This holds the current state of the grid, including the positions of the pipes.
+-   `availablePieces`: This keeps track of how many pieces of each pipe are available.
+-   `showOverlay`: A flag for showing the overlay (win or lose message).
+-   `message`: The message shown when the game ends (e.g., "Winner!" or "Try Again!").
+-   `flowingPath`: This holds the coordinates of the cells where water is flowing, helping to visualize the water flow.
 
-This is a React wrapper for Boostrap. It is optional to use this and we recommend you use bootstrap directly when possible.
+### 5\. **Main Pieces & Special Pieces**:
 
-##### axios
+-   The game separates pieces into "main" (regular pipes like horizontal and vertical) and "special" (start and end pieces).
+-   This separation helps to render them in different sections of the UI.
 
-This library is used to make Ajax requests to a server.
+### 6\. **Grid Layout**:
 
-##### react-router
+-   The pipes are grouped and displayed in rows, and this layout is used for displaying the available pieces on the left-hand side of the screen.
 
-The module we use to make client side routing possible
+### 7\. **Handling Drag-and-Drop (`handleDragStart` and `handleDrop`)**:
 
-##### toastr
+-   The game allows players to drag and drop pipes onto the grid. The `handleDragStart` function prepares the pipe for dragging, and `handleDrop` places the dragged pipe onto the grid. If a pipe is replaced, its count is updated in the `availablePieces` state.
 
-- https://github.com/CodeSeven/toastr
+### 8\. **Removing Pipes (`handleRemove`)**:
 
-This is to be used to provide informational messages to the user. For example in the following situations:
+-   Players can remove a pipe from the grid. The `handleRemove` function sets the cell back to "empty" and updates the available pieces.
 
-- "You have logged in successfully"
-- "You have created a record"
-- "You have uploaded a file"
+### 9\. **Water Flow Simulation**:
 
-##### sweetalert
+-   The `flowWater` function simulates the water's journey starting from the "start" pipe. It:
+    -   Finds the "start" pipe's position.
+    -   Traverses through the grid in the directions allowed by the connected pipes.
+    -   Marks the path where the water flows.
+    -   When the water reaches the "end" pipe, the game ends with a win or lose message.
+-   This is done using a breadth-first search algorithm, where the queue holds the current cells to check. The water flows from the start, following the connected directions until it reaches the end or cannot continue.
 
-- https://sweetalert.js.org/guides/#using-with-libraries
+### 10\. **Restarting the Game (`restartGame`)**:
 
-Alerts are very obtrusive so they should not be used every time you want to provide feedback to a user. Instead use them when you want to confirm the user wants to perform an action or when you want to give a user a choice of actions.
+-   When the game is over, the player can click a button to restart the game. This resets the grid, the available pieces, the water flow, and the win/lose message.
 
-A great example is when a user clicks a "Delete" button. Instead of just moving forward with a delete operation, "Alert" them to confirm that they DO, in fact, want to _DELETE_ the record.
+### 11\. **UI Layout**:
 
-##### rc-pagination
+-   The UI consists of:
+    -   A list of available pieces that the player can drag and drop onto the grid.
+    -   A grid where the player places the pipes.
+    -   A button to start the water flow and check if the pipes connect the start to the end.
+    -   An overlay showing the win or lose message.
 
-- https://github.com/react-component/pagination
+This code handles both the mechanics of placing pipes and simulating water flow. The player needs to correctly arrange the pipes to connect the "start" to the "end" so that water can flow through the pipes.
 
-This tool provide for you a ready to use component to draw a pagination tool to use to navigation from page to page, go "next" and "previous". **_Read more_ below.**
-
-##### Using rc-pagintation
-
-Once you are ready to do pagination in React you should use the library installed already called rc-pagination.
-
-For more on using this go to he documentation:
-
-- https://github.com/react-component/pagination
-
-_It is very important that you import the css file to use this library_
-
-To import the css file add to the top of the component:
-
-```javascript
-import "rc-pagination/assets/index.css";
-import locale from "rc-pagination/lib/locale/en_US";
-```
-
-Here is stubbed out snippet where you still have to proivde much of the logic. Be sure to look at the documention so that you can determine what other properties you need to use.
-
-````javascript
-export default class App extends React.Component {
-  state = {
-    current: 3,
-  };
-
-  onChange = page => {
-    console.log(page);
-    this.setState({
-      current: page,
-    });
-  };
-
-  render() {
-    return (
-      <Pagination
-        onChange={this.onChange}
-        current={this.state.current}
-        total={25}
-        locale={locale}
-      />
-    );
-  }
-}```
-````
